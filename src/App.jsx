@@ -1,35 +1,23 @@
-import { useState } from 'react';
-import './App.css';
-
+import "./App.css";
+import { useState } from "react";
 function App() {
-  const [greetingMessage, setGreetingMessage] = useState('Greeting Message');
-
-  const handleClick = (message) => setGreetingMessage(message);
-
-  // const messages = ['สวัสดี!', 'Hi!', '你好!'];
-
+  const [greeting, setGreeting] = useState("Greeting Message");
+  const changeGreeting = (language) => {
+    if (language === "thai") {
+      setGreeting("สวัสดี!");
+    } else if (language === "english") {
+      setGreeting("Hi!");
+    } else if (language === "chinese") {
+      setGreeting("你好!");
+    }
+  };
   return (
     <div className="App">
-      <div className="greeting-container">{greetingMessage}</div>
+      <div className="greeting-container">{greeting}</div>
       <div className="buttons">
-        {/* Function Event Handler */}
-        <button onClick={() => handleClick('สวัสดี!')}>สวัสดี!</button>
-        <button onClick={() => handleClick('Hi!')}>Hi!</button>
-        <button onClick={() => handleClick('你好!')}>你好!</button>
-
-        {/* Anonymous Function  */}
-        {/* <button onClick={() => setGreetingMessage('สวัสดี!')}>สวัสดี!</button>
-        <button onClick={() => setGreetingMessage('Hi!')}>Hi!</button>
-        <button onClick={() => setGreetingMessage('你好!')}>你好!</button> */}
-
-        {/* Rendering List Items with Anonymous function  */}
-        {/* {messages.map((message, index) => {
-          return (
-            <button key={index} onClick={() => setGreetingMessage(message)}>
-              {message}
-            </button>
-          );
-        })} */}
+        <button onClick={() => changeGreeting("thai")}>สวัสดี!</button>
+        <button onClick={() => changeGreeting("english")}>Hi!</button>
+        <button onClick={() => changeGreeting("chinese")}>你好!</button>
       </div>
     </div>
   );
